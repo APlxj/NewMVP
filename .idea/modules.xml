@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/NewMVP.iml" filepath="$PROJECT_DIR$/NewMVP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/main/main.iml" filepath="$PROJECT_DIR$/main/main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/model-base/baselib.iml" filepath="$PROJECT_DIR$/model-base/baselib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/model-data/model-data.iml" filepath="$PROJECT_DIR$/model-data/model-data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/model-ui/model-ui.iml" filepath="$PROJECT_DIR$/model-ui/model-ui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/model-utils/model-utils.iml" filepath="$PROJECT_DIR$/model-utils/model-utils.iml" />
+    </modules>
+  </component>
+</project>

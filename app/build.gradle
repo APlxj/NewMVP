@@ -1,0 +1,121 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
+        signingConfigs {
+            //签名配置
+            release {
+                keyAlias 'NewMVP'
+                keyPassword '940902'
+                storeFile file('../NewMVP.jks')
+                storePassword '940902'
+                v1SigningEnabled true
+                v2SigningEnabled true
+            }
+        }
+
+        //MultiDex分包方法
+        multiDexEnabled true
+
+        //Arouter路由配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
+
+        //目录指向配置
+        sourceSets {
+            //设置依赖so库路径
+            main.jniLibs.srcDirs = ['libs']
+        }
+
+        ndk {
+            // 设置支持的SO库架构(cpu)
+            abiFilters 'armeabi', 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+
+    buildTypes {
+        debug {
+            //是否进行混淆
+            minifyEnabled false
+            // 混淆文件的位置
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //配置签名文件
+            signingConfig signingConfigs.release
+        }
+//        release {
+//            minifyEnabled false
+//            //是否清理无用资源,依赖于minifyEnabled
+//            shrinkResources false
+//            //是否启用zipAlign压缩
+//            zipAlignEnabled false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            //配置签名文件
+//            signingConfig signingConfigs.release
+//            //配置apk路径
+//            applicationVariants.all {
+//                variant ->
+//                    def buildType = variant.buildType.name
+//                    variant.getPackageApplication().outputDirectory = new File(rootProject.rootDir,"releaseApk")
+//                    variant.outputs.each { output ->
+//                        def outputFile = output.outputFile
+//                        if (outputFile != null && outputFile.name.endsWith('.apk')) {
+//                            // 输出apk名称为XXX20160328_v1.0.0_vc10_XXXX_test.apk
+//                            if (project.hasProperty('ENVIRONMENT_PARA')) {
+//                                def fileName = "frame_${releaseTime()}_v${rootProject.ext.android.versionName}.apk"
+//                                //控制输出的APK的存放路径
+//                                if (project.hasProperty('OUT_PUT_DIR_PARA')) {
+//                                    //AS 3.0之前自定义apk名称：
+//                                    //File output_dir1 = project.file("${OUT_PUT_DIR_PARA}");
+//                                    // output.outputFile = new File("${OUT_PUT_DIR_PARA}", fileName)
+//                                    //  println "输出文件位置： " + output.outputFile
+//
+//                                    //AS 3.0后
+//                                    output.apkData.outputFileName = fileName  //  output.outputFile 改为 outputFileName
+//
+//                                } else {
+//                                    output.outputFile = new File(outputFile.parent, fileName)
+//                                    println "输出文件位置： " + output.outputFile
+//                                }
+//                            }
+//                        }
+//                    }
+//            }
+//        }
+    }
+}
+
+//定义一个打包时间
+//static def releaseTime() {
+//    return new Date().format("yyyy-MM-dd", TimeZone.getTimeZone("UTC"))
+//}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    if (!rootProject.ext.isMain) {
+        implementation project(':main')
+    }
+
+    //基础库
+    implementation project(':model-base')
+    //数据模块
+    implementation project(":model-data")
+    //工具
+    implementation project(":model-utils")
+}
