@@ -1,14 +1,21 @@
-package swallow.com.newmvp;
+package swallow.com.main.home;
 
 import swallow.com.model_base.BaseActivity;
 import swallow.com.model_base.IMVP.IPresenter;
 import swallow.com.model_base.IMVP.IView;
 
-public class MainActivity extends BaseActivity {
+/**
+ * 类描述：
+ * 创建人：swallow.li
+ * 创建时间：
+ * Email: swallow.li@kemai.cn
+ * 修改备注：
+ */
+public class HomeActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return R.layout.activity_main;
+        return 0;
     }
 
     @Override

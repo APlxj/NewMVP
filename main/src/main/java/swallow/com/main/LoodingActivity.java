@@ -1,22 +1,38 @@
 package swallow.com.main;
 
-import android.os.Bundle;
-
-import swallow.com.baselib.BaseActivity;
+import swallow.com.model_base.BaseActivity;
+import swallow.com.model_base.IMVP.IPresenter;
+import swallow.com.model_base.IMVP.IView;
 
 public class LoodingActivity extends BaseActivity {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public int getLayoutId() {
+        return R.layout.activity_looding;
     }
 
     @Override
-    protected int getLayoutId() {
-        return R.layout.activity_main;
+    public void initTitle() {
+
     }
 
     @Override
-    protected void init() {
+    public void initView() {
+
+    }
+
+    @Override
+    public void init() {
+
+    }
+
+    @Override
+    public IPresenter createPresenter() {
+        return null;
+    }
+
+    @Override
+    public IView createView() {
+        return null;
     }
 }

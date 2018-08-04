@@ -1,18 +1,29 @@
 apply plugin: 'com.android.library'
+apply plugin: 'me.tatarka.retrolambda'  //lambda配置
+apply plugin: 'com.jakewharton.butterknife'
 
 android {
-    compileSdkVersion 26
 
-
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
+        //MultiDex分包方法
+        multiDexEnabled true
+
+        //Arouter路由配置
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [moduleName: project.getName()]
+            }
+        }
     }
 
     buildTypes {
@@ -22,9 +33,20 @@ android {
         }
     }
 
+    //防止编译的时候oom、GC
+    dexOptions {
+        javaMaxHeapSize "4g"
+    }
+
     compileOptions {
-        targetCompatibility 1.8
-        sourceCompatibility 1.8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //解决.9图问题
+    aaptOptions {
+        cruncherEnabled = false
+        useNewCruncher = false
     }
 }
 
@@ -37,9 +59,12 @@ dependencies {
     api rootProject.ext.dependencies["support-v4"]
     api rootProject.ext.dependencies["design"]
     api rootProject.ext.dependencies["support_annotations"]
+    api rootProject.ext.dependencies["guava"]
 
     //工具
     implementation project(":model-utils")
+    //模型
+    implementation project(":model-data")
 
     //MultiDex分包方法
     api rootProject.ext.dependencies["multidex"]
