@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
@@ -49,6 +51,8 @@ public abstract class BaseActivity<V extends swallow.com.model_base.IMVP.IView, 
         unBinder = ButterKnife.bind(this);
         //加入activity管理
         BaseApplication.getAppContext().getActivityControl().addActivity(this);
+        //Arouter注册
+        ARouter.getInstance().inject(this);
         //沉浸式状态栏
         //setImmeriveStatuBar();
         mActivity = this;

@@ -10,4 +10,9 @@ import swallow.com.model_base.BaseApplication;
  * 修改备注：
  */
 public class MyApp extends BaseApplication {
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
 }

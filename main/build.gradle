@@ -4,6 +4,7 @@ if (Boolean.valueOf(rootProject.ext.isMain)) {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'com.jakewharton.butterknife'
+apply plugin: 'me.tatarka.retrolambda'  //lambda配置
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -28,7 +29,7 @@ android {
         }
 
         //强制前缀
-        //resourcePrefix "main_"
+        resourcePrefix "main_"
     }
 
     compileOptions {
@@ -62,11 +63,10 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-//    implementation rootProject.ext.dependencies["constraint_layout"]
-//    implementation rootProject.ext.dependencies["appcompat_v7"]
-//    testImplementation rootProject.ext.dependencies["junit"]
-//    androidTestImplementation rootProject.ext.dependencies["runner"]
-//    androidTestImplementation rootProject.ext.dependencies["espresso_core"]
+    //ARouter多组件问题解决  将arouter-compiler放到使用了@Route注解的模块中
+    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
+    //butterknife多组件问题解决 将butterknife-compiler放到使用了@BindView注解的模块中
+    annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
     //基础库
     implementation project(':model-base')
 }

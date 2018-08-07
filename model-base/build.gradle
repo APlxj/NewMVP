@@ -69,7 +69,7 @@ dependencies {
     //MultiDex分包方法
     api rootProject.ext.dependencies["multidex"]
     //Arouter路由
-    annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
+    //annotationProcessor rootProject.ext.dependencies["arouter_compiler"]
     api rootProject.ext.dependencies["arouter_api"]
     api rootProject.ext.dependencies["arouter_annotation"]
     //网络

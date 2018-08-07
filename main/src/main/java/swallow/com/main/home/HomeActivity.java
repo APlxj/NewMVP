@@ -1,5 +1,9 @@
 package swallow.com.main.home;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+
+import swallow.com.main.R;
+import swallow.com.main.app.RouterURL;
 import swallow.com.model_base.BaseActivity;
 import swallow.com.model_base.IMVP.IPresenter;
 import swallow.com.model_base.IMVP.IView;
@@ -11,11 +15,12 @@ import swallow.com.model_base.IMVP.IView;
  * Email: swallow.li@kemai.cn
  * 修改备注：
  */
+@Route(path = RouterURL.Home)
 public class HomeActivity extends BaseActivity {
 
     @Override
     public int getLayoutId() {
-        return 0;
+        return R.layout.mall_activity_home;
     }
 
     @Override

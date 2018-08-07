@@ -9,6 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 import org.greenrobot.eventbus.EventBus;
 
 import butterknife.ButterKnife;
@@ -52,7 +54,9 @@ public abstract class BaseFragment<V extends IView, P extends IPresenter<V>>
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getLayoutId(), container, false);
+        //butterKnife
         unBinder = ButterKnife.bind(this, view);
+        //eventBus
         EventBus.getDefault().register(this);
         onViewCreated();
         initTitle();
