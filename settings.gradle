@@ -1,1 +1,1 @@
-include ':app', ':model-base', ':model-data', ':model-ui', ':model-utils', ':main'
+include ':app', ':model-base', ':model-data', ':model-ui', ':model-utils', ':main', ':model-net'

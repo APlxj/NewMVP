@@ -1,8 +1,5 @@
 package swallow.com.model_base;
 
-import android.arch.lifecycle.Lifecycle;
-import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.view.View;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
@@ -25,7 +22,7 @@ public abstract class BaseListFragment<V extends IView, P extends IPresenter<V>>
         implements OnRefreshListener, OnLoadMoreListener {
 
     protected int page = 0;
-    protected int pageSize = 20;
+    protected int pageSize = 5;
     protected boolean isRefresh = true;
     protected SmartRefreshLayout rlRefreshLayout;
 

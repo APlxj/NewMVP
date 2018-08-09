@@ -1,6 +1,6 @@
 package swallow.com.main.home;
 
-import swallow.com.model_base.IMVP.IModel;
+import swallow.com.model_base.DisposablePool;
 
 /**
  * 类描述：
@@ -9,5 +9,6 @@ import swallow.com.model_base.IMVP.IModel;
  * Email: swallow.li@kemai.cn
  * 修改备注：
  */
-public class HomeModel implements IModel {
+public class HomeModel extends DisposablePool implements HomeContract.Model {
+
 }

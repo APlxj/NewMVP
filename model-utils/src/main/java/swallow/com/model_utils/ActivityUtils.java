@@ -30,6 +30,7 @@ public final class ActivityUtils {
         throw new UnsupportedOperationException("u can't instantiate me...");
     }
 
+
     /**
      * 判断 Activity 是否存在
      *

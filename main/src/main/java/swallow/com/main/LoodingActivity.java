@@ -1,6 +1,9 @@
 package swallow.com.main;
 
 import android.annotation.SuppressLint;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,36 +14,31 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.Unbinder;
 import swallow.com.main.app.RouterURL;
 import swallow.com.model_base.BaseActivity;
 import swallow.com.model_base.IMVP.IPresenter;
 import swallow.com.model_base.IMVP.IView;
 
 @Route(path = RouterURL.Lood)
-public class LoodingActivity extends BaseActivity {
+public class LoodingActivity extends AppCompatActivity {
 
     @BindView(R2.id.jup)
     TextView jup;
     private int time = 10;
     private Timer timer;
+    private Unbinder unBinder;
 
     @Override
-    public int getLayoutId() {
-        return R.layout.activity_looding;
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_looding);
+        unBinder = ButterKnife.bind(this);
+        init();
     }
 
-    @Override
-    public void initTitle() {
-
-    }
-
-    @Override
-    public void initView() {
-
-    }
-
-    @Override
     public void init() {
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -68,12 +66,10 @@ public class LoodingActivity extends BaseActivity {
     }
 
     @Override
-    public IPresenter createPresenter() {
-        return null;
-    }
-
-    @Override
-    public IView createView() {
-        return null;
+    protected void onDestroy() {
+        super.onDestroy();
+        if (null != unBinder) {
+            unBinder.unbind();
+        }
     }
 }

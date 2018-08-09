@@ -31,4 +31,11 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies["runner"]
     androidTestImplementation rootProject.ext.dependencies["espresso_core"]
     implementation rootProject.ext.dependencies["design"]
+
+    //图片
+    api rootProject.ext.dependencies["glide"]
+    //banner轮播图
+    api rootProject.ext.dependencies["banner"]
+    //图片形状
+    api rootProject.ext.dependencies["roundedimageview"]
 }

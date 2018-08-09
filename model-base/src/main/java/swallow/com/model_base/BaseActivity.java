@@ -31,7 +31,7 @@ import swallow.com.model_utils.ToastUtils;
  * Email: swallow.li@kemai.cn
  * 修改备注：
  */
-public abstract class BaseActivity<V extends swallow.com.model_base.IMVP.IView, P extends IPresenter<V>>
+public abstract class BaseActivity<V extends IView, P extends IPresenter<V>>
         extends AppCompatActivity
         implements MvpCallback<V, P>, IView, IActivity {
 
@@ -59,8 +59,8 @@ public abstract class BaseActivity<V extends swallow.com.model_base.IMVP.IView, 
         //数据传递
         EventBus.getDefault().register(this);
         //V P 新建  绑定
-        //initListener();
-        //onViewCreated();
+        onViewCreated();
+        initListener();
         //开始主要操作
         initTitle();
         initView();

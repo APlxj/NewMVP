@@ -1,4 +1,4 @@
-package swallow.com.main.home;
+package swallow.com.main.mine;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -102,5 +102,7 @@ ext {
             "VerticalTabLayout"              : "q.rorbin:VerticalTabLayout:1.2.5",
             //水平tablayout
             "FlycoTabLayout_Lib"             : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
+            //图片形状
+            "roundedimageview"               : "com.makeramen:roundedimageview:2.2.1"
     ]
 }

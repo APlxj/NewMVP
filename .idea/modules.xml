@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/main/main.iml" filepath="$PROJECT_DIR$/main/main.iml" />
       <module fileurl="file://$PROJECT_DIR$/model-base/model-base.iml" filepath="$PROJECT_DIR$/model-base/model-base.iml" />
       <module fileurl="file://$PROJECT_DIR$/model-data/model-data.iml" filepath="$PROJECT_DIR$/model-data/model-data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/model-net/model-net.iml" filepath="$PROJECT_DIR$/model-net/model-net.iml" />
       <module fileurl="file://$PROJECT_DIR$/model-ui/model-ui.iml" filepath="$PROJECT_DIR$/model-ui/model-ui.iml" />
       <module fileurl="file://$PROJECT_DIR$/model-utils/model-utils.iml" filepath="$PROJECT_DIR$/model-utils/model-utils.iml" />
     </modules>

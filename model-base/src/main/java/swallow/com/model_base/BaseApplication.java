@@ -9,11 +9,14 @@ import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
+import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
 import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 import swallow.com.model_base.arouter.RouterConfig;
 import swallow.com.model_utils.JRTTDensityUtils;
 import swallow.com.model_utils.L;
+import swallow.com.model_base.R;
+import swallow.com.model_utils.Utils;
 
 /**
  * 类描述：
@@ -35,10 +38,10 @@ public class BaseApplication extends Application {
         //设置全局的Header构建器
         SmartRefreshLayout.setDefaultRefreshHeaderCreator((context, layout) -> {
             //全局设置主题颜色
-            layout.setPrimaryColorsId(R.color.cardview_shadow_end_color, android.R.color.white);
+            layout.setPrimaryColorsId(android.R.color.darker_gray, android.R.color.white);
             //.setTimeFormat(new DynamicTimeFormat("更新于 %s"));
             //指定为经典Header，默认是 贝塞尔雷达Header
-            return new ClassicsHeader(context);
+            return new BezierRadarHeader(context);
         });
         //设置全局的Footer构建器
         SmartRefreshLayout.setDefaultRefreshFooterCreator((context, layout) -> {
@@ -69,6 +72,7 @@ public class BaseApplication extends Application {
         //初始化Log
         L.init(IS_DEBUG);
         L.i("当前是否为debug模式：" + IS_DEBUG);
+        Utils.init(this);
     }
 
     @Override

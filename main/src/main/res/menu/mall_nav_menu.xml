@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
 
     <group android:id="@+id/other">
-        <item android:id="@+id/nav_item_welfare"
-        android:icon="@mipmap/icon_meinv"
-        android:title="@string/mall_welfare" />
+        <item
+            android:id="@+id/item1"
+            android:icon="@mipmap/icon_meinv"
+            android:title="@string/item1" />
 
-        <item android:id="@+id/nav_item_video"
+        <item
+            android:id="@+id/item2"
             android:icon="@mipmap/icon_vidio"
-            android:title="@string/mall_video" />
+            android:title="@string/item2" />
 
-        <item android:id="@+id/nav_item_about_us"
+        <item
+            android:id="@+id/item3"
             android:icon="@mipmap/icon_about_us"
-            android:title="@string/mall_about_us" />
+            android:title="@string/item3" />
 
-        <item android:id="@+id/nav_item_logout"
+        <item
+            android:id="@+id/item4"
             android:icon="@mipmap/icon_logout"
-            android:title="@string/mall_logout" />
+            android:title="@string/item4" />
     </group>
 </menu>

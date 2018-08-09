@@ -69,4 +69,12 @@ dependencies {
     annotationProcessor rootProject.ext.dependencies["butterknife_compiler"]
     //基础库
     implementation project(':model-base')
+    //工具
+    implementation project(':model-utils')
+    //ui
+    implementation project(':model-ui')
+    //模型
+    implementation project(':model-data')
+    //网络
+    implementation project(':model-net')
 }

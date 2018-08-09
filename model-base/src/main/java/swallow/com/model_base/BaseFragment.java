@@ -1,6 +1,6 @@
 package swallow.com.model_base;
 
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,9 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.alibaba.android.arouter.launcher.ARouter;
-
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -19,6 +19,7 @@ import swallow.com.model_base.IMVP.IFragment;
 import swallow.com.model_base.IMVP.IPresenter;
 import swallow.com.model_base.IMVP.IView;
 import swallow.com.model_base.IMVP.MvpCallback;
+import swallow.com.model_data.BaseEventbusBean;
 import swallow.com.model_utils.ToastUtils;
 
 /**
@@ -83,6 +84,20 @@ public abstract class BaseFragment<V extends IView, P extends IPresenter<V>>
         mPresenter = getPresenter();
         //在这个时候才attach view是因为这个时候view的初始化已经基本完成,在Presenter中调用view的域也不会为空
         mPresenter.attachView(getMvpView());
+    }
+
+    /**
+     * eventBut
+     *
+     * @param event
+     */
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(BaseEventbusBean event) {
+        onEvent(event);
+    }
+
+    protected void onEvent(BaseEventbusBean event) {
+
     }
 
     //MvpCallback
