@@ -1,5 +1,6 @@
 package swallow.com.model_utils;
 
+import android.annotation.SuppressLint;
 import android.app.ActivityManager;
 import android.app.AppOpsManager;
 import android.app.usage.UsageStats;
@@ -110,6 +111,7 @@ public final class ProcessUtils {
      *
      * @return 被暂时杀死的服务集合
      */
+    @SuppressLint("MissingPermission")
     public static Set<String> killAllBackgroundProcesses() {
         ActivityManager am = (ActivityManager) Utils.getApp().getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> info = am.getRunningAppProcesses();
@@ -136,6 +138,7 @@ public final class ProcessUtils {
      * @param packageName 包名
      * @return {@code true}: 杀死成功<br>{@code false}: 杀死失败
      */
+    @SuppressLint("MissingPermission")
     public static boolean killBackgroundProcesses(@NonNull final String packageName) {
         ActivityManager am = (ActivityManager) Utils.getApp().getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningAppProcessInfo> info = am.getRunningAppProcesses();

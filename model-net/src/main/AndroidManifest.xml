@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="swallow.com.model_net" />
+<manifest package="swallow.com.model_net" />

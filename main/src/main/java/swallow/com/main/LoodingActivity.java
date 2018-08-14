@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -17,10 +18,16 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import swallow.com.main.app.RouterURL;
-import swallow.com.model_base.BaseActivity;
-import swallow.com.model_base.IMVP.IPresenter;
-import swallow.com.model_base.IMVP.IView;
+import swallow.com.model_base.BaseObserver;
+import swallow.com.model_data.BannerData;
+import swallow.com.model_data.JSBean;
+import swallow.com.model_net.ModelVpService;
+import swallow.com.model_net.api.ApiService;
+import swallow.com.model_net.constant.BaseObj;
+import swallow.com.model_utils.L;
 
 @Route(path = RouterURL.Lood)
 public class LoodingActivity extends AppCompatActivity {
@@ -33,13 +40,26 @@ public class LoodingActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        //getSupportActionBar().hide();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_looding);
         unBinder = ButterKnife.bind(this);
         init();
     }
 
+    @SuppressLint("CheckResult")
     public void init() {
+
+        ModelVpService.getJSNews(ApiService::getJSNews)
+                .subscribeOn(Schedulers.io()) //指定网络请求在IO线程
+                .observeOn(AndroidSchedulers.mainThread())     //显示数据在主线程
+                .subscribeWith(new BaseObserver<BaseObj<JSBean>>() {
+                    @Override
+                    public void onNext(BaseObj<JSBean> jsBeanBaseObj) {
+                        L.d(jsBeanBaseObj.toString());
+                    }
+                });
+
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @SuppressLint("SetTextI18n")

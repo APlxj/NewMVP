@@ -51,7 +51,7 @@ public final class PhoneUtils {
      *
      * @return IMEI 码
      */
-    @SuppressLint("HardwareIds")
+    @SuppressLint({"HardwareIds", "MissingPermission"})
     public static String getIMEI() {
         TelephonyManager tm = (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
         return tm != null ? tm.getDeviceId() : null;
@@ -63,7 +63,7 @@ public final class PhoneUtils {
      *
      * @return IMSI 码
      */
-    @SuppressLint("HardwareIds")
+    @SuppressLint({"HardwareIds", "MissingPermission"})
     public static String getIMSI() {
         TelephonyManager tm = (TelephonyManager) Utils.getApp().getSystemService(Context.TELEPHONY_SERVICE);
         return tm != null ? tm.getSubscriberId() : null;
@@ -150,7 +150,7 @@ public final class PhoneUtils {
      * SubscriberId(IMSI) = 460030419724900<br>
      * VoiceMailNumber = *86<br>
      */
-    @SuppressLint("HardwareIds")
+    @SuppressLint({"HardwareIds", "MissingPermission"})
     public static String getPhoneStatus() {
         TelephonyManager tm = (TelephonyManager) Utils.getApp()
                 .getSystemService(Context.TELEPHONY_SERVICE);
@@ -334,6 +334,7 @@ public final class PhoneUtils {
      * <p>需添加权限 {@code <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>}</p>
      * <p>需添加权限 {@code <uses-permission android:name="android.permission.READ_SMS"/>}</p>
      */
+    @SuppressLint("SdCardPath")
     public static void getAllSMS() {
         // 1.获取短信
         // 1.1 获取内容解析者

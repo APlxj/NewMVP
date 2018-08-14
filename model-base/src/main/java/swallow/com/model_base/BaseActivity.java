@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
 
@@ -40,12 +42,14 @@ public abstract class BaseActivity<V extends IView, P extends IPresenter<V>>
     private Unbinder unBinder;
     public BaseActivity mActivity;
     protected boolean isDestory = false;
+    //选中fragment
+    private Fragment mCurrentFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        //getSupportActionBar().hide();
+        //requestWindowFeature(Window.FEATURE_NO_TITLE);// 填充标题栏
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getSupportActionBar().hide();
         setContentView(getLayoutId());
         //ButterKnife
         unBinder = ButterKnife.bind(this);
@@ -130,6 +134,31 @@ public abstract class BaseActivity<V extends IView, P extends IPresenter<V>>
 
 
     //IView
+
+    /**
+     * 显示fragment
+     */
+    @Override
+    public void showFragment(int frameLayoutId, Fragment fragment) {
+        if (fragment != null) {
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            if (fragment.isAdded()) {
+                if (mCurrentFragment != null) {
+                    transaction.hide(mCurrentFragment).show(fragment);
+                } else {
+                    transaction.show(fragment);
+                }
+            } else {
+                if (mCurrentFragment != null) {
+                    transaction.hide(mCurrentFragment).add(frameLayoutId, fragment);
+                } else {
+                    transaction.add(frameLayoutId, fragment);
+                }
+            }
+            mCurrentFragment = fragment;
+            transaction.commit();
+        }
+    }
 
     @Override
     public void showError(String msg, String code) {

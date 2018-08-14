@@ -23,14 +23,16 @@ public class BaseHost {
         String host;
         switch (hostType) {
             case HostType.NETEASE_NEWS_VIDEO:
-               // host = NETEAST_HOST; String BASE_URL = "http://www.wanandroid.com/";
-                host = "http://www.wanandroid.com/" ;
+                host = "http://www.wanandroid.com/";
                 break;
             case HostType.GANK_GIRL_PHOTO:
                 host = SINA_PHOTO_HOST;
                 break;
             case HostType.NEWS_DETAIL_HTML_PHOTO:
                 host = "http://kaku.com/";
+                break;
+            case HostType.JS_NEWS:
+                host = "http://open.iciba.com/dsapi/";
                 break;
             default:
                 host = "";

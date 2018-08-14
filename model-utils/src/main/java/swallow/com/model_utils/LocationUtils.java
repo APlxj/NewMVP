@@ -1,5 +1,6 @@
 package swallow.com.model_utils;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Criteria;
@@ -148,6 +149,7 @@ public final class LocationUtils {
      * @param listener    位置刷新的回调接口
      * @return {@code true}: 初始化成功<br>{@code false}: 初始化失败
      */
+    @SuppressLint("MissingPermission")
     public static boolean register(long minTime, long minDistance, OnLocationChangeListener listener) {
         if (listener == null) return false;
         mLocationManager = (LocationManager) Utils.getApp().getSystemService(LOCATION_SERVICE);
@@ -168,7 +170,8 @@ public final class LocationUtils {
     /**
      * 注销
      */
-    public static void unregister() {
+    @SuppressLint("MissingPermission")
+    private static void unregister() {
         if (mLocationManager != null) {
             if (myLocationListener != null) {
                 mLocationManager.removeUpdates(myLocationListener);

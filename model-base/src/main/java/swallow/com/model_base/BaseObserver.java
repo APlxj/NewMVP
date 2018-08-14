@@ -130,7 +130,6 @@ public abstract class BaseObserver<T> extends ResourceObserver<T> {
             mView.showError("网络异常", "-1");
         } else {
             mView.showError("未知错误", "-1");
-
         }
         onComplete();
     }

@@ -9,14 +9,15 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import swallow.com.model_data.BannerData;
-import swallow.com.model_data.BaseObj;
 import swallow.com.model_data.FeedArticleListData;
+import swallow.com.model_data.JSBean;
 import swallow.com.model_data.KnowledgeChildBean;
 import swallow.com.model_data.KnowledgeSystemBean;
 import swallow.com.model_data.NavigationBean;
 import swallow.com.model_data.ProjectClassifyBean;
 import swallow.com.model_data.ProjectListBean;
 import swallow.com.model_data.TopSearchBean;
+import swallow.com.model_net.constant.BaseObj;
 
 /**
  * @Created by TOME .
@@ -103,4 +104,10 @@ public interface ApiService {
      */
     @GET("project/list/{page}/json")
     Observable<BaseObj<ProjectListBean>> getProjectListData(@Path("page") int page, @Query("cid") int cid);
+
+    /**
+     * 金山广告
+     */
+    @GET
+    Observable<BaseObj<JSBean>> getJSNews();
 }

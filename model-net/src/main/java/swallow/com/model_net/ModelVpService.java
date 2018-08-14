@@ -1,8 +1,8 @@
 package swallow.com.model_net;
 
 import io.reactivex.Observable;
-import swallow.com.model_data.BaseObj;
 import swallow.com.model_net.api.ApiService;
+import swallow.com.model_net.constant.BaseObj;
 import swallow.com.model_net.params.HttpHelper;
 import swallow.com.model_net.utils.RxUtils;
 
@@ -14,9 +14,6 @@ import swallow.com.model_net.utils.RxUtils;
 
 public class ModelVpService {
 
-    private ModelVpService mMvpService;
-    private ModelVpService mService;
-
     /**
      * 获取api的回调
      *
@@ -27,14 +24,16 @@ public class ModelVpService {
         Observable<BaseObj<T>> selectM(ApiService service);
     }
 
-    public ModelVpService(ModelVpService modelService) {
-        mMvpService = modelService;
-    }
-
-
     public static <T> io.reactivex.Observable<BaseObj<T>> getRemoteDataVp(MethodSelect<T> select) {
         //设置不同的BaseUrl
         return select.selectM(HttpHelper.getDefault(1)
+                .create(ApiService.class))
+                .compose(RxUtils.<BaseObj<T>>rxSchedulerHelper());
+    }
+
+    public static <T> io.reactivex.Observable<BaseObj<T>> getJSNews(MethodSelect<T> select) {
+        //设置不同的BaseUrl
+        return select.selectM(HttpHelper.getDefault2(4)
                 .create(ApiService.class))
                 .compose(RxUtils.<BaseObj<T>>rxSchedulerHelper());
     }

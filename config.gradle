@@ -23,7 +23,7 @@ ext {
             "runner"                         : 'com.android.support.test:runner:1.0.2',
             "espresso_core"                  : 'com.android.support.test.espresso:espresso-core:3.0.2',
             "junit"                          : 'junit:junit:4.12',
-            "support_annotations"            : 'com.android.support:support-annotations:24.0.0',
+            "support_annotations"            : 'com.android.support:support-annotations:27.1.1',
             "design"                         : "com.android.support:design:${android["androidSupportSdkVersion"]}",
             "support-v4"                     : "com.android.support:support-v4:${android["androidSupportSdkVersion"]}",
             "cardview-v7"                    : "com.android.support:cardview-v7:${android["androidSupportSdkVersion"]}",
@@ -103,6 +103,8 @@ ext {
             //水平tablayout
             "FlycoTabLayout_Lib"             : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
             //图片形状
-            "roundedimageview"               : "com.makeramen:roundedimageview:2.2.1"
+            "roundedimageview"               : "com.makeramen:roundedimageview:2.2.1",
+            //gson
+            "gson"                           : "com.google.code.gson:gson:2.2.4",
     ]
 }

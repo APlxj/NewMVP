@@ -1,9 +1,12 @@
 package swallow.com.newmvp;
 
+import android.annotation.SuppressLint;
+
 import swallow.com.model_base.BaseActivity;
 import swallow.com.model_base.IMVP.IPresenter;
 import swallow.com.model_base.IMVP.IView;
 
+@SuppressLint("Registered")
 public class MainActivity extends BaseActivity {
 
     @Override

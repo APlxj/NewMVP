@@ -10,12 +10,10 @@ import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
-import com.scwang.smartrefresh.layout.header.ClassicsHeader;
 
 import swallow.com.model_base.arouter.RouterConfig;
 import swallow.com.model_utils.JRTTDensityUtils;
 import swallow.com.model_utils.L;
-import swallow.com.model_base.R;
 import swallow.com.model_utils.Utils;
 
 /**
@@ -59,7 +57,7 @@ public class BaseApplication extends Application {
         //热修复初始化
         //initBugly();
         //适配初始化
-        JRTTDensityUtils.setDensity(this, 480);
+        JRTTDensityUtils.setDensity(this, 375);
         //Stetho调试工具初始化
         Stetho.initializeWithDefaults(this);
         // 初始化Logger工具

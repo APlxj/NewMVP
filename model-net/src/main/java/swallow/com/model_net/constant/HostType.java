@@ -18,7 +18,6 @@ public class HostType {
      */
     public static final int NETEASE_NEWS_VIDEO = 1;
 
-
     /**
      * 新浪图片的host
      */
@@ -28,4 +27,9 @@ public class HostType {
      * 新闻详情html图片的host
      */
     public static final int NEWS_DETAIL_HTML_PHOTO = 3;
+
+    /**
+     * 金山宣传
+     */
+    public static final int JS_NEWS = 4;
 }

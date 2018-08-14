@@ -100,6 +100,7 @@ public final class DeviceUtils {
             @SuppressLint("WifiManagerLeak")
             WifiManager wifi = (WifiManager) Utils.getApp().getSystemService(Context.WIFI_SERVICE);
             if (wifi != null) {
+                @SuppressLint("MissingPermission")
                 WifiInfo info = wifi.getConnectionInfo();
                 if (info != null) return info.getMacAddress();
             }

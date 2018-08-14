@@ -52,7 +52,6 @@ public class JRTTDensityUtils {
         }
     }
 
-
     private static void setDefault(Activity activity) {
         setAppOrientation(activity);
     }

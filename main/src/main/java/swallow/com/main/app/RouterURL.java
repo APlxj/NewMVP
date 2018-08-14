@@ -10,6 +10,5 @@ package swallow.com.main.app;
 public interface RouterURL {
 
     String Home = "/main/home";
-    String Mine = "/mian/mine";
     String Lood = "/mian/lood";
 }

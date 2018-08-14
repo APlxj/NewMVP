@@ -6,7 +6,6 @@ import android.support.annotation.CallSuper;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import swallow.com.model_base.IMVP.IModel;
-import swallow.com.model_base.IMVP.IPresenter;
 import swallow.com.model_base.IMVP.IView;
 
 /**

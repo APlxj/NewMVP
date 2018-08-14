@@ -1,5 +1,7 @@
 package swallow.com.model_base.IMVP;
 
+import android.support.v4.app.Fragment;
+
 /**
  * 类描述：activity规则接口
  * 创建人：swallow.li
@@ -31,4 +33,8 @@ public interface IActivity {
      */
     void init();
 
+    /**
+     * 显示Fragment
+     */
+    void showFragment(int frameLayoutId, Fragment fragment);
 }
