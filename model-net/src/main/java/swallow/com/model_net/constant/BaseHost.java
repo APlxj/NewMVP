@@ -32,7 +32,10 @@ public class BaseHost {
                 host = "http://kaku.com/";
                 break;
             case HostType.JS_NEWS:
-                host = "http://open.iciba.com/dsapi/";
+                host = "http://open.iciba.com/";
+                break;
+            case HostType.POS:
+                host = "http://www.yingqianpos.com/";
                 break;
             default:
                 host = "";

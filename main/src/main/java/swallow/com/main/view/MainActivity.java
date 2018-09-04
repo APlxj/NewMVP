@@ -1,6 +1,7 @@
 package swallow.com.main.view;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -9,11 +10,14 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +29,7 @@ import swallow.com.main.app.RouterURL;
 import swallow.com.main.contract.IMainContract;
 import swallow.com.main.presenter.HomePresenter;
 import swallow.com.model_base.BaseActivity;
+import swallow.com.model_base.BaseApplication;
 import swallow.com.model_data.BaseEventbusBean;
 import swallow.com.model_data.EventBusBean;
 import swallow.com.model_ui.BottomNavigationViewHelper;
@@ -149,7 +154,6 @@ public class MainActivity
             }
             return true;
         });
-
     }
 
     /**
@@ -197,20 +201,23 @@ public class MainActivity
 
     @Override
     public void showWelCome() {
-        ToastUtils.showShort("欢迎光临");
+        //ToastUtils.showShort("欢迎光临");
     }
 
     @Override
     public void showData(List<String> data) {
-        ToastUtils.showShort(data.toString());
+        //ToastUtils.showShort(data.toString());
     }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.item1) {//福利
-            ToastUtils.showShort("福利");
-
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+            ARouter.getInstance()
+                    .build(RouterURL.Web)
+                    .withString("http://image.baidu.com/", "uri")
+                    .navigation();
         } else if (id == R.id.item2) {//视频
             ToastUtils.showShort("视频");
 
@@ -219,6 +226,7 @@ public class MainActivity
 
         } else if (id == R.id.item4) {//退出登录
             mDrawerLayout.closeDrawer(GravityCompat.START);
+            BaseApplication.getActivityControl().finishiAll();
         }
         return false;
     }
@@ -236,5 +244,22 @@ public class MainActivity
                 mDrawerLayout.openDrawer(GravityCompat.START);
             }
         }
+    }
+
+    @SuppressLint("ResourceType")
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
+            alertDialog.setTitle("温馨提示")
+                    .setMessage("确认退出吗?")
+                    .setIcon(getResources().getDrawable(R.drawable.warning))
+                    .setPositiveButton("确定", (dialog, which) ->
+                            BaseApplication.getActivityControl().finishiAll())
+                    .setNegativeButton("取消", (dialog, which) -> {
+                    });
+            alertDialog.show();
+        }
+        return false;
     }
 }

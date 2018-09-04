@@ -54,7 +54,7 @@ public abstract class BaseActivity<V extends IView, P extends IPresenter<V>>
         //ButterKnife
         unBinder = ButterKnife.bind(this);
         //加入activity管理
-        BaseApplication.getAppContext().getActivityControl().addActivity(this);
+        BaseApplication.getActivityControl().addActivity(this);
         //Arouter注册
         ARouter.getInstance().inject(this);
         //沉浸式状态栏

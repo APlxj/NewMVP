@@ -11,4 +11,5 @@ public interface RouterURL {
 
     String Home = "/main/home";
     String Lood = "/mian/lood";
+    String Web = "/mian/web";
 }

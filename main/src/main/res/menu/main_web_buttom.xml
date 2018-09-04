@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/goback"
+        android:enabled="true"
+        android:icon="@drawable/csx"
+        android:title="@string/main_goback"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/refresh"
+        android:enabled="true"
+        android:icon="@drawable/ct1"
+        android:title="@string/main_refresh"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/goforward"
+        android:enabled="true"
+        android:icon="@drawable/csz"
+        android:title="@string/main_goforward"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/finish"
+        android:enabled="true"
+        android:icon="@drawable/coa"
+        android:title="@string/main_finish"
+        app:showAsAction="ifRoom" />
+</menu>

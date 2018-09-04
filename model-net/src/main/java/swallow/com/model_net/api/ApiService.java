@@ -5,9 +5,11 @@ import java.util.Map;
 
 import io.reactivex.Observable;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
+import retrofit2.http.Url;
 import swallow.com.model_data.BannerData;
 import swallow.com.model_data.FeedArticleListData;
 import swallow.com.model_data.JSBean;
@@ -16,6 +18,7 @@ import swallow.com.model_data.KnowledgeSystemBean;
 import swallow.com.model_data.NavigationBean;
 import swallow.com.model_data.ProjectClassifyBean;
 import swallow.com.model_data.ProjectListBean;
+import swallow.com.model_data.StockEntry;
 import swallow.com.model_data.TopSearchBean;
 import swallow.com.model_net.constant.BaseObj;
 
@@ -108,6 +111,17 @@ public interface ApiService {
     /**
      * 金山广告
      */
-    @GET
+    @GET("/dsapi/")
     Observable<BaseObj<JSBean>> getJSNews();
+
+    /**
+     * 库存查询
+     * http://www.yingqianpos.com/yunpos/vol/sync/stock/QueryStockOnline.form?
+     * PageStart=0&PageSize=30&BranchId=888&MerchantId=10000604&VersionCode=R2.1.8
+     *
+     * @return
+     */
+    @POST()
+    Observable<BaseObj<StockEntry>> getStock(@Url String url
+            , @QueryMap Map<String, String> map);
 }

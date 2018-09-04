@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Cache;
@@ -27,12 +26,6 @@ import swallow.com.model_net.BuildConfig;
 import swallow.com.model_net.constant.BaseHost;
 import swallow.com.model_net.constant.HostType;
 import swallow.com.model_utils.NetUtils;
-
-/**
- * @Created by TOME .
- * @时间 2018/5/15 16:21
- * @描述 ${TODO}
- */
 
 public class HttpHelper {
 
@@ -72,12 +65,12 @@ public class HttpHelper {
      */
     private HttpHelper(int hostType) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        if (BuildConfig.DEBUG) {
+        /*if (BuildConfig.DEBUG) {
             //开启Log
             HttpLoggingInterceptor logInterceptor = new HttpLoggingInterceptor(new HttpLogger());
             logInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             builder.addNetworkInterceptor(logInterceptor);
-        }
+        }*/
         //缓存
         File cacheFile = new File(BaseApplication.getAppContext().getCacheDir(), "cache");
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 100); //100Mb
@@ -88,8 +81,6 @@ public class HttpHelper {
                     .build();
             return chain.proceed(build);
         };
-
-        //okHttpClient = new OkHttpClient.Builder();
 
         builder.readTimeout(READ_TIME_OUT, TimeUnit.MILLISECONDS)
                 .connectTimeout(CONNECT_TIME_OUT, TimeUnit.MILLISECONDS)
@@ -103,12 +94,10 @@ public class HttpHelper {
         okHttpClient = builder.build();
 
         //自定义Gson对象
-        Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'ToastUtils'HH:mm:ssZ").serializeNulls().create();
         retrofit = new Retrofit.Builder()
                 .baseUrl(BaseHost.getHost(hostType))
                 .client(okHttpClient)
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                //.addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .build();
     }
@@ -122,16 +111,6 @@ public class HttpHelper {
 
         return retrofit;
     }
-
-    public static Retrofit getDefault2(int hostType) {
-        retrofit = new Retrofit.Builder()
-                .baseUrl(BaseHost.getHost(hostType))
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .build();
-        return retrofit;
-    }
-
 
     /**
      * 根据网络状况获取缓存的策略

@@ -11,7 +11,7 @@ public class HostType {
     /**
      * 多少种Host类型
      */
-    public static final int TYPE_COUNT = 3;
+    public static final int TYPE_COUNT = 5;
 
     /**
      * 网易新闻视频的host
@@ -32,4 +32,9 @@ public class HostType {
      * 金山宣传
      */
     public static final int JS_NEWS = 4;
+
+    /**
+     * yunPOS
+     */
+    public static final int POS = 5;
 }

@@ -297,4 +297,6 @@
     <!-- 海军色 -->
     <color name="black">#000000</color>
     <!-- 黑色 -->
+    <color name="tra">#80000000</color>
+    <!-- 半透明 -->
 </resources>

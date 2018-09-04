@@ -27,7 +27,7 @@ public class BaseApplication extends Application {
 
     private static BaseApplication mBaseApplication;
     //Activity管理
-    private ActivityControl mActivityControl;
+    private static ActivityControl mActivityControl;
     public static boolean IS_DEBUG = BuildConfig.DEBUG;
 
     //SmartRefreshLayout 有三种方式,请参考:https://github.com/scwang90/SmartRefreshLayout
@@ -85,7 +85,7 @@ public class BaseApplication extends Application {
         return mBaseApplication;
     }
 
-    public ActivityControl getActivityControl() {
+    public static ActivityControl getActivityControl() {
         return mActivityControl;
     }
 

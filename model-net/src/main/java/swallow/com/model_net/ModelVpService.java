@@ -6,12 +6,6 @@ import swallow.com.model_net.constant.BaseObj;
 import swallow.com.model_net.params.HttpHelper;
 import swallow.com.model_net.utils.RxUtils;
 
-/**
- * @author by TOME .
- * @data on      2018/6/29 11:33
- * @describe ${mvp}
- */
-
 public class ModelVpService {
 
     /**
@@ -28,13 +22,13 @@ public class ModelVpService {
         //设置不同的BaseUrl
         return select.selectM(HttpHelper.getDefault(1)
                 .create(ApiService.class))
-                .compose(RxUtils.<BaseObj<T>>rxSchedulerHelper());
+                .compose(RxUtils.rxSchedulerHelper());
     }
 
-    public static <T> io.reactivex.Observable<BaseObj<T>> getJSNews(MethodSelect<T> select) {
+    public static <T> io.reactivex.Observable<BaseObj<T>> getRemoteData(MethodSelect<T> select, int type) {
         //设置不同的BaseUrl
-        return select.selectM(HttpHelper.getDefault2(4)
+        return select.selectM(HttpHelper.getDefault(type)
                 .create(ApiService.class))
-                .compose(RxUtils.<BaseObj<T>>rxSchedulerHelper());
+                .compose(RxUtils.rxSchedulerHelper());
     }
 }
