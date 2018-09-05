@@ -3,6 +3,7 @@ package swallow.com.model_base;
 import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
+import android.text.TextUtils;
 
 import com.facebook.stetho.Stetho;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -10,8 +11,16 @@ import com.orhanobut.logger.Logger;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 import com.scwang.smartrefresh.layout.header.BezierRadarHeader;
+import com.tencent.bugly.crashreport.CrashReport;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 import swallow.com.model_base.arouter.RouterConfig;
+import swallow.com.model_base.crash.BuglyUtils;
+import swallow.com.model_base.crash.MyCrashHandler;
+import swallow.com.model_base.crash.RecoveryUtils;
 import swallow.com.model_utils.JRTTDensityUtils;
 import swallow.com.model_utils.L;
 import swallow.com.model_utils.Utils;
@@ -52,14 +61,20 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mActivityControl = new ActivityControl();
-        //arouter路由初始化
+        //arouter(阿里路由)
         RouterConfig.init(this, IS_DEBUG);
-        //热修复初始化
-        //initBugly();
-        //适配初始化
+        //初始化Bugly
+        BuglyUtils.init(getApplicationContext(), IS_DEBUG);
+        //适配初始化(今日头条适配方案)
         JRTTDensityUtils.setDensity(this, 375);
         //Stetho调试工具初始化
         Stetho.initializeWithDefaults(this);
+        //初始化工具类
+        Utils.init(this);
+        //recovery配置
+        //RecoveryUtils.init(this);
+        //关闭系统崩溃提示
+        MyCrashHandler.register();
         // 初始化Logger工具
         Logger.addLogAdapter(new AndroidLogAdapter() {
             @Override
@@ -69,8 +84,6 @@ public class BaseApplication extends Application {
         });
         //初始化Log
         L.init(IS_DEBUG);
-        L.i("当前是否为debug模式：" + IS_DEBUG);
-        Utils.init(this);
     }
 
     @Override

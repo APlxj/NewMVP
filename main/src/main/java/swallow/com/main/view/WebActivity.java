@@ -15,6 +15,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
@@ -39,7 +40,7 @@ import swallow.com.model_utils.NetworkUtils;
 @Route(path = RouterURL.Web)
 public class WebActivity
         extends BaseActivity<IWebContract.View, IWebContract.Presenter>
-        implements IWebContract.View{
+        implements IWebContract.View {
 
     @BindView(R2.id.web_view)
     WebView mWebView;
@@ -47,6 +48,8 @@ public class WebActivity
     LinearLayout mRootView;
     @BindView(R2.id.iv_refresh)
     ImageView iv_refresh;
+    @BindView(R2.id.tv_title)
+    TextView tv_title;
     @Autowired
     public String uri;
 
@@ -132,6 +135,8 @@ public class WebActivity
 
     @Override
     public void init() {
+        tv_title = null;
+        tv_title.setText("福利");
         mWebView.loadUrl("http://image.baidu.com/");
         //加载 HTML 页面的一小段内容
         //WebView.loadData(String data, String mimeType, String encoding)
@@ -258,6 +263,11 @@ public class WebActivity
     @Override
     public void finish(View view) {
         finish();
+    }
+
+    @Override
+    public void set(View view) {
+
     }
 }
 

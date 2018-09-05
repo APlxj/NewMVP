@@ -299,4 +299,12 @@
     <!-- 黑色 -->
     <color name="tra">#80000000</color>
     <!-- 半透明 -->
+
+    <!--recovery配置-->
+    <color name="recovery_colorPrimary">#2E2E36</color>
+    <color name="recovery_colorPrimaryDark">#2E2E36</color>
+    <color name="recovery_colorAccent">#BDBDBD</color>
+    <color name="recovery_background">#3C4350</color>
+    <color name="recovery_textColor">#FFFFFF</color>
+    <color name="recovery_textColor_sub">#C6C6C6</color>
 </resources>

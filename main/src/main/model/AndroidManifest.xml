@@ -5,7 +5,8 @@
     <application
         android:name=".app.MyApp"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/cj"
+        android:label="@string/main_app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".view.MainActivity">
@@ -15,6 +16,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".view.LoginRegistActivity" />
+        <activity android:name=".view.WebActivity" />
     </application>
 
 </manifest>

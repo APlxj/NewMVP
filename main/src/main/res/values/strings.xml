@@ -50,4 +50,6 @@
     <string name="main_goforward">下一步</string>
     <string name="main_refresh">刷新</string>
     <string name="main_finish">退出</string>
+    <string name="main_fuli">福利</string>
+    <string name="main_app_name">e眼</string>
 </resources>

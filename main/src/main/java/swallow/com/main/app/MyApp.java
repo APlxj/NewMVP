@@ -1,5 +1,6 @@
 package swallow.com.main.app;
 
+import swallow.com.main.crash.RecoveryUtils;
 import swallow.com.model_base.BaseApplication;
 
 /**
@@ -14,5 +15,7 @@ public class MyApp extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        //recovery配置
+        RecoveryUtils.init(this);
     }
 }
