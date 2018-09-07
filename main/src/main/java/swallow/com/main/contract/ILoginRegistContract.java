@@ -1,8 +1,8 @@
 package swallow.com.main.contract;
 
-import swallow.com.model_base.IMVP.IView;
-import swallow.com.model_base.IMVP.IPresenter;
 import swallow.com.model_base.IMVP.IModel;
+import swallow.com.model_base.IMVP.IPresenter;
+import swallow.com.model_base.IMVP.IView;
 
 /**
  * Description :
@@ -14,6 +14,8 @@ import swallow.com.model_base.IMVP.IModel;
 
 public interface ILoginRegistContract {
     interface View extends IView {
+        void register(android.view.View view);
+        void login();
     }
 
     interface Presenter extends IPresenter<View> {

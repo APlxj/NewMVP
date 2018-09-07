@@ -19,7 +19,7 @@ import swallow.com.model_base.IMVP.IFragment;
 import swallow.com.model_base.IMVP.IPresenter;
 import swallow.com.model_base.IMVP.IView;
 import swallow.com.model_base.IMVP.MvpCallback;
-import swallow.com.model_data.BaseEventbusBean;
+import swallow.com.model_data.model.BaseEventbusBean;
 import swallow.com.model_utils.ToastUtils;
 
 /**

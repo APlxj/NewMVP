@@ -9,7 +9,7 @@ import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import io.reactivex.observers.ResourceObserver;
 import retrofit2.HttpException;
 import swallow.com.model_base.IMVP.IView;
-import swallow.com.model_data.ServerException;
+import swallow.com.model_data.model.ServerException;
 import swallow.com.model_utils.ActivityUtils;
 import swallow.com.model_utils.L;
 import swallow.com.model_utils.NetUtils;

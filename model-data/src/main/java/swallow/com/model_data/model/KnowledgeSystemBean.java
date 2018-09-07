@@ -1,4 +1,4 @@
-package swallow.com.model_data;
+package swallow.com.model_data.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;

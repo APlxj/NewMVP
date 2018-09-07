@@ -1,4 +1,4 @@
-package swallow.com.model_data;
+package swallow.com.model_data.model;
 
 /**
  * @Created by TOME .
@@ -6,15 +6,19 @@ package swallow.com.model_data;
  * @描述 ${EventBus 事件类型}
  */
 
-public class EventBusBean extends BaseEventbusBean<Object>{
+public class EventBusBean extends BaseEventbusBean<Object> {
 
     public EventBusBean(int type, Object obj) {
         super(type, obj);
     }
 
-    //例子
-    public static final int CUSTOMER_FILTER = 10000;
-
     //侧滑菜单
     public static final int SHOP_MALL_HOME = 10001;
+
+    //登录
+    public static final int TOLOGIN = 10002;
+
+    //登录账号
+    public static final int LOGINNUM = 10003;
+
 }

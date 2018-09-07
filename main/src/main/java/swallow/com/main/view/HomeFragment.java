@@ -18,7 +18,7 @@ import swallow.com.main.R2;
 import swallow.com.main.contract.IHomeContract;
 import swallow.com.main.presenter.MainPresenter;
 import swallow.com.model_base.BaseListFragment;
-import swallow.com.model_data.EventBusBean;
+import swallow.com.model_data.model.EventBusBean;
 import swallow.com.model_ui.keyboard.KeyboardType;
 import swallow.com.model_ui.keyboard.SecurityConfigure;
 import swallow.com.model_ui.keyboard.SecurityEditText;

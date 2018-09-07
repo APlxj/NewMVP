@@ -52,4 +52,18 @@
     <string name="main_finish">退出</string>
     <string name="main_fuli">福利</string>
     <string name="main_app_name">e眼</string>
+    <string name="main_register">新用户注册</string>
+    <string name="order">订单</string>
+    <string name="type">更多</string>
+    <string name="main_user_name">姓名</string>
+    <string name="main_password">密码</string>
+    <string name="main_login">登录</string>
+    <string name="main_mobile">电话</string>
+    <string name="main_gender">性别</string>
+    <string name="main_age">年龄</string>
+    <string name="main_nation">民族</string>
+    <string name="main_politicsstatus">政治面貌</string>
+    <string name="main_education">学历</string>
+    <string name="main_address">地址</string>
+    <string name="main_idcardno">身份证号码</string>
 </resources>

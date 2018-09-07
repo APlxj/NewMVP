@@ -2,6 +2,7 @@ package swallow.com.model_base;
 
 import android.app.Application;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.multidex.MultiDex;
 import android.text.TextUtils;
 
@@ -21,6 +22,8 @@ import swallow.com.model_base.arouter.RouterConfig;
 import swallow.com.model_base.crash.BuglyUtils;
 import swallow.com.model_base.crash.MyCrashHandler;
 import swallow.com.model_base.crash.RecoveryUtils;
+import swallow.com.model_data.db.DaoMaster;
+import swallow.com.model_data.db.DaoSession;
 import swallow.com.model_utils.JRTTDensityUtils;
 import swallow.com.model_utils.L;
 import swallow.com.model_utils.Utils;
@@ -38,6 +41,8 @@ public class BaseApplication extends Application {
     //Activity管理
     private static ActivityControl mActivityControl;
     public static boolean IS_DEBUG = BuildConfig.DEBUG;
+    //db
+    private DaoSession daoSession;
 
     //SmartRefreshLayout 有三种方式,请参考:https://github.com/scwang90/SmartRefreshLayout
     //static 代码段可以防止内存泄露
@@ -71,6 +76,8 @@ public class BaseApplication extends Application {
         Stetho.initializeWithDefaults(this);
         //初始化工具类
         Utils.init(this);
+        //初始化数据库
+        initGreenDao();
         //recovery配置
         //RecoveryUtils.init(this);
         //关闭系统崩溃提示
@@ -86,12 +93,24 @@ public class BaseApplication extends Application {
         L.init(IS_DEBUG);
     }
 
+    //初始化数据库
+    private void initGreenDao() {
+        DaoMaster.DevOpenHelper helper = new DaoMaster.DevOpenHelper(this, "sport-db", null);
+        SQLiteDatabase db = helper.getWritableDatabase();
+        DaoMaster daoMaster = new DaoMaster(db);
+        daoSession = daoMaster.newSession();
+    }
+
     @Override
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         mBaseApplication = this;
         //MultiDex分包方法 必须最先初始化
         MultiDex.install(this);
+    }
+
+    public DaoSession getDaoSession() {
+        return daoSession;
     }
 
     public static BaseApplication getAppContext() {

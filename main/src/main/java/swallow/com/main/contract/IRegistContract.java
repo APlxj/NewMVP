@@ -1,8 +1,11 @@
 package swallow.com.main.contract;
 
-import swallow.com.model_base.IMVP.IView;
-import swallow.com.model_base.IMVP.IPresenter;
+import java.util.List;
+
 import swallow.com.model_base.IMVP.IModel;
+import swallow.com.model_base.IMVP.IPresenter;
+import swallow.com.model_base.IMVP.IView;
+import swallow.com.model_data.model.User;
 
 /**
  * Description :
@@ -14,11 +17,24 @@ import swallow.com.model_base.IMVP.IModel;
 
 public interface IRegistContract {
     interface View extends IView {
+
+        void register();
+
+        boolean verifyMsg();
+
+        boolean saveMsg();
     }
 
     interface Presenter extends IPresenter<View> {
+        boolean saveMsg(User user);
+
+        List<User> queryByIDCardNO(String idCardNO);
     }
 
     interface Model extends IModel {
+
+        boolean saveMsg(User user);
+
+        List<User> queryByIDCardNO(String idCardNO);
     }
 }

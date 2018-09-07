@@ -1,4 +1,4 @@
-package swallow.com.model_data;
+package swallow.com.model_data.model;
 
 /**EventBus事件类
  * Created by ghy on 2017/11/10.

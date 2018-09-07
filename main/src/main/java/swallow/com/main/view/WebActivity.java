@@ -135,7 +135,6 @@ public class WebActivity
 
     @Override
     public void init() {
-        tv_title = null;
         tv_title.setText("福利");
         mWebView.loadUrl("http://image.baidu.com/");
         //加载 HTML 页面的一小段内容

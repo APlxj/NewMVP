@@ -10,16 +10,16 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
-import swallow.com.model_data.BannerData;
-import swallow.com.model_data.FeedArticleListData;
-import swallow.com.model_data.JSBean;
-import swallow.com.model_data.KnowledgeChildBean;
-import swallow.com.model_data.KnowledgeSystemBean;
-import swallow.com.model_data.NavigationBean;
-import swallow.com.model_data.ProjectClassifyBean;
-import swallow.com.model_data.ProjectListBean;
-import swallow.com.model_data.StockEntry;
-import swallow.com.model_data.TopSearchBean;
+import swallow.com.model_data.model.BannerData;
+import swallow.com.model_data.model.FeedArticleListData;
+import swallow.com.model_data.model.JSBean;
+import swallow.com.model_data.model.KnowledgeChildBean;
+import swallow.com.model_data.model.KnowledgeSystemBean;
+import swallow.com.model_data.model.NavigationBean;
+import swallow.com.model_data.model.ProjectClassifyBean;
+import swallow.com.model_data.model.ProjectListBean;
+import swallow.com.model_data.model.StockEntry;
+import swallow.com.model_data.model.TopSearchBean;
 import swallow.com.model_net.constant.BaseObj;
 
 /**

@@ -1,7 +1,6 @@
 package swallow.com.main.view;
 
 import android.annotation.SuppressLint;
-import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.NavigationView;
@@ -30,8 +29,8 @@ import swallow.com.main.contract.IMainContract;
 import swallow.com.main.presenter.HomePresenter;
 import swallow.com.model_base.BaseActivity;
 import swallow.com.model_base.BaseApplication;
-import swallow.com.model_data.BaseEventbusBean;
-import swallow.com.model_data.EventBusBean;
+import swallow.com.model_data.model.BaseEventbusBean;
+import swallow.com.model_data.model.EventBusBean;
 import swallow.com.model_ui.BottomNavigationViewHelper;
 import swallow.com.model_utils.ToastUtils;
 
@@ -86,7 +85,8 @@ public class MainActivity
         mNavigationView.getHeaderView(0)
                 .findViewById(R.id.nav_header_login_tv)
                 .setOnClickListener(v -> {
-                    ToastUtils.showShort("请登录");
+                    ARouter.getInstance().build(RouterURL.LANDR).navigation();
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
                 });
 
         //通过actionbardrawertoggle将toolbar与drawablelayout关联起来
@@ -253,7 +253,7 @@ public class MainActivity
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
             alertDialog.setTitle("温馨提示")
                     .setMessage("确认退出吗?")
-                    .setIcon(getResources().getDrawable(R.drawable.warning))
+                    //.setIcon(getResources().getDrawable(R.drawable.warning))
                     .setPositiveButton("确定", (dialog, which) ->
                             BaseApplication.getActivityControl().finishiAll())
                     .setNegativeButton("取消", (dialog, which) -> {

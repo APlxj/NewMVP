@@ -1,10 +1,14 @@
-package swallow.com.model_data;
+package swallow.com.model_data.model;
+
+import org.greenrobot.greendao.annotation.Entity;
+import org.greenrobot.greendao.annotation.Id;
+import org.greenrobot.greendao.annotation.Generated;
 
 /**
  * @author quchao
  * @date 2018/3/2
  */
-
+@Entity
 public class BannerData {
 
 
@@ -20,6 +24,7 @@ public class BannerData {
      */
 
     private String desc;
+    @Id
     private int id;
     private String imagePath;
     private int isVisible;
@@ -27,6 +32,23 @@ public class BannerData {
     private String title;
     private int type;
     private String url;
+
+    @Generated(hash = 1556807743)
+    public BannerData(String desc, int id, String imagePath, int isVisible, int order,
+            String title, int type, String url) {
+        this.desc = desc;
+        this.id = id;
+        this.imagePath = imagePath;
+        this.isVisible = isVisible;
+        this.order = order;
+        this.title = title;
+        this.type = type;
+        this.url = url;
+    }
+
+    @Generated(hash = 1707770751)
+    public BannerData() {
+    }
 
     public String getDesc() {
         return desc;

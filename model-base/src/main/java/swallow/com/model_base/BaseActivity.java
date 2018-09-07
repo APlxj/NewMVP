@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Window;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 
@@ -22,7 +21,7 @@ import swallow.com.model_base.IMVP.IActivity;
 import swallow.com.model_base.IMVP.IPresenter;
 import swallow.com.model_base.IMVP.IView;
 import swallow.com.model_base.IMVP.MvpCallback;
-import swallow.com.model_data.BaseEventbusBean;
+import swallow.com.model_data.model.BaseEventbusBean;
 import swallow.com.model_utils.StatuBarCompat;
 import swallow.com.model_utils.ToastUtils;
 

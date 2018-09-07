@@ -8,8 +8,8 @@ import io.reactivex.Observable;
 import swallow.com.model_base.IMVP.IModel;
 import swallow.com.model_base.IMVP.IPresenter;
 import swallow.com.model_base.IMVP.IView;
-import swallow.com.model_data.BannerData;
-import swallow.com.model_data.FeedArticleListData;
+import swallow.com.model_data.model.BannerData;
+import swallow.com.model_data.model.FeedArticleListData;
 import swallow.com.model_net.constant.BaseObj;
 
 /**

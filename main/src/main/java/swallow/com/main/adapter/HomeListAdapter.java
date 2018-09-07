@@ -15,7 +15,7 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import java.util.List;
 
 import swallow.com.main.R;
-import swallow.com.model_data.FeedArticleData;
+import swallow.com.model_data.model.FeedArticleData;
 
 /**
  * @Created by TOME .

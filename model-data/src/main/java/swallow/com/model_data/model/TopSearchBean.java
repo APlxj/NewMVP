@@ -1,4 +1,4 @@
-package swallow.com.model_data;
+package swallow.com.model_data.model;
 
 /**
  * @author quchao

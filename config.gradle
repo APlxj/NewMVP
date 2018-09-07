@@ -87,6 +87,9 @@ ext {
             "javax-annotation"               : 'org.glassfish:javax.annotation:10.0-b28',
             //greendao
             "greendao3"                      : 'org.greenrobot:greendao:3.2.2',
+            "generator"                      : "org.greenrobot:greendao-generator:3.2.2",
+            //greendao数据库加密
+            "sqlcipher"                      : "net.zetetic:android-database-sqlcipher:3.5.6",
             //Android屏幕适配
             "autolayout"                     : 'com.zhy:autolayout:1.4.5',
             //安卓调试神器-Stetho

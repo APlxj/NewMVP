@@ -7,6 +7,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+import android.text.TextUtils;
 
 import java.io.File;
 
@@ -507,4 +508,5 @@ public final class IntentUtils {
 //        intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
 //        return intent;
 //    }
+
 }

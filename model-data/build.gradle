@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'org.greenrobot.greendao'
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -21,6 +22,12 @@ android {
         }
     }
 
+    greendao {
+        schemaVersion 1 //数据库版本号
+        daoPackage 'swallow.com.model_data.db'// 设置DaoMaster、DaoSession、Dao 包名
+        targetGenDir 'src/main/java'//设置DaoMaster、DaoSession、Dao目录
+    }
+
 }
 
 dependencies {
@@ -31,4 +38,9 @@ dependencies {
     androidTestImplementation rootProject.ext.dependencies["runner"]
     androidTestImplementation rootProject.ext.dependencies["espresso_core"]
     implementation rootProject.ext.dependencies["design"]
+    //greendao3
+    api rootProject.ext.dependencies["greendao3"]
+    api rootProject.ext.dependencies["generator"]
+    //数据库加密
+    api rootProject.ext.dependencies["sqlcipher"]
 }

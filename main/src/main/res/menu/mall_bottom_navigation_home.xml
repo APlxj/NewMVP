@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:ignore="ResourceName">
 
     <item
@@ -15,14 +15,14 @@
         android:id="@+id/tab_goods"
         android:enabled="true"
         android:icon="@drawable/mall_home_tab_knowledge_system"
-        android:title="@string/mall_home_knowledge_system"
+        android:title="@string/order"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/tab_cart"
         android:enabled="true"
         android:icon="@drawable/mall_home_tab_navigation"
-        android:title="@string/mall_home_navigation"
+        android:title="@string/type"
         app:showAsAction="ifRoom" />
 
     <item
