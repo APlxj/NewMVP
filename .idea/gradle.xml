@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/model-net" />
             <option value="$PROJECT_DIR$/model-ui" />
             <option value="$PROJECT_DIR$/model-utils" />
+            <option value="$PROJECT_DIR$/model-zxing" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

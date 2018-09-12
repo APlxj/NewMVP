@@ -60,8 +60,6 @@ public class MainActivity
     BottomNavigationView mBottomNavigationView;
     //fragment容器
     private List<Fragment> mFragmentList;
-    //选中fragment
-    private Fragment mCurrentFragment;
 
     @Override
     public int getLayoutId() {
@@ -141,46 +139,19 @@ public class MainActivity
         //默认 >3 的选中效果会影响ViewPager的滑动切换时的效果，故利用反射去掉
         BottomNavigationViewHelper.disableShiftMode(mBottomNavigationView);
         // 预设定进来后,默认显示fragment
-        addFragment(R.id.layout_pager, mFragmentList.get(0));
+        showFragment(R.id.layout_pager, mFragmentList.get(0));
         mBottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             if (item.getItemId() == R.id.tab_home) {
-                addFragment(R.id.layout_pager, mFragmentList.get(0));
+                showFragment(R.id.layout_pager, mFragmentList.get(0));
             } else if (item.getItemId() == R.id.tab_goods) {
-                addFragment(R.id.layout_pager, mFragmentList.get(1));
+                showFragment(R.id.layout_pager, mFragmentList.get(1));
             } else if (item.getItemId() == R.id.tab_cart) {
-                addFragment(R.id.layout_pager, mFragmentList.get(2));
+                showFragment(R.id.layout_pager, mFragmentList.get(2));
             } else if (item.getItemId() == R.id.tab_self) {
-                addFragment(R.id.layout_pager, mFragmentList.get(3));
+                showFragment(R.id.layout_pager, mFragmentList.get(3));
             }
             return true;
         });
-    }
-
-    /**
-     * 显示fragment
-     *
-     * @param frameLayoutId
-     * @param fragment
-     */
-    private void addFragment(int frameLayoutId, Fragment fragment) {
-        if (fragment != null) {
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            if (fragment.isAdded()) {
-                if (mCurrentFragment != null) {
-                    transaction.hide(mCurrentFragment).show(fragment);
-                } else {
-                    transaction.show(fragment);
-                }
-            } else {
-                if (mCurrentFragment != null) {
-                    transaction.hide(mCurrentFragment).add(frameLayoutId, fragment);
-                } else {
-                    transaction.add(frameLayoutId, fragment);
-                }
-            }
-            mCurrentFragment = fragment;
-            transaction.commit();
-        }
     }
 
     @Override

@@ -80,43 +80,11 @@
             app:riv_border_width="0dp"
             app:riv_oval="true" />
 
-        <RelativeLayout
-            android:id="@+id/rl_shop_cart"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:visibility="gone">
+        <ImageButton
+            android:id="@+id/ib_scan"
+            android:background="@drawable/i2g"
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
 
-            <ImageView
-                android:id="@+id/iv_right2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:src="@mipmap/cart" />
-
-            <TextView
-                android:id="@+id/tv_cart_count"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_alignParentTop="true"
-                android:layout_alignRight="@+id/iv_right2"
-                android:background="@drawable/circle_yellow"
-                android:gravity="center"
-                android:textColor="@color/white"
-                android:textSize="10dp"
-                android:visibility="visible"
-                tools:text="9" />
-        </RelativeLayout>
-
-        <TextView
-            android:id="@+id/tv_right_filter"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="12dp"
-            android:layout_marginStart="10dp"
-            android:text="筛选"
-            android:textSize="12sp"
-            android:visibility="gone" />
     </LinearLayout>
 </LinearLayout>

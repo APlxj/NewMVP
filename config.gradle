@@ -110,6 +110,8 @@ ext {
             //gson
             "gson"                           : "com.google.code.gson:gson:2.2.4",
             //Crash 自动恢复框架
-            "recovery"                       : "com.zxy.android:recovery:0.1.6"
+            "recovery"                       : "com.zxy.android:recovery:0.1.6",
+            //zxing
+            "zxing"                          : "com.google.zxing:core:3.3.3"
     ]
 }

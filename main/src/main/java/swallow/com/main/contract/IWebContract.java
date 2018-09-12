@@ -23,6 +23,8 @@ public interface IWebContract {
         void finish(android.view.View view);
 
         void set(android.view.View view);
+
+        void scan();
     }
 
     interface Presenter extends IPresenter<View> {

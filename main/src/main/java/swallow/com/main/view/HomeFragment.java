@@ -47,16 +47,6 @@ public class HomeFragment
     //头像
     @BindView(R2.id.iv_right)
     ImageView mIvRight;
-    //购物车
-    @BindView(R2.id.iv_right2)
-    ImageView mIvRight2;
-    @BindView(R2.id.tv_cart_count)
-    TextView mTvCartCount;
-    @BindView(R2.id.rl_shop_cart)
-    RelativeLayout mRlShopCart;
-    //筛选
-    @BindView(R2.id.tv_right_filter)
-    TextView mTvRightFilter;
     //title总布局
     @BindView(R2.id.v_title_container)
     LinearLayout mVTitleContainer;
