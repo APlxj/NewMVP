@@ -27,5 +27,7 @@ public class IMainContract {
         void showWelCome();
 
         void showData(List<String> data);
+
+        void share();
     }
 }

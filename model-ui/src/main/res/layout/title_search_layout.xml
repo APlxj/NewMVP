@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -75,16 +74,16 @@
             android:id="@+id/iv_right"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@mipmap/photo"
+            android:src="@drawable/f37"
             app:riv_border_color="#333333"
             app:riv_border_width="0dp"
             app:riv_oval="true" />
 
         <ImageButton
             android:id="@+id/ib_scan"
-            android:background="@drawable/i2g"
-            android:layout_width="40dp"
-            android:layout_height="40dp" />
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/scan" />
 
     </LinearLayout>
 </LinearLayout>

@@ -11,10 +11,7 @@ import swallow.com.model_zxing.R;
  * @date: 2017/10/27 14:48
  * @declare :zxing配置类
  */
-
-
 public class ZxingConfig implements Serializable {
-
 
     /*是否播放声音*/
     private boolean isPlayBeep = true;
@@ -38,15 +35,13 @@ public class ZxingConfig implements Serializable {
     @ColorRes
     private int frameLineColor = -1;
 
+    /*扫描线颜色*/
+    @ColorRes
+    private int scanLineColor = -1;
 
-//    /*扫描线颜色*/
-//    @ColorRes
-//    private int scanLineColor = R.color.scanLineColor;
-//
-//    /*遮罩颜色*/
-//    @ColorRes
-//    private int maskViewColor = R.color.viewfinder_mask;
-
+    /*遮罩颜色*/
+    @ColorRes
+    private int maskViewColor = -1;
 
     public int getFrameLineColor() {
         return frameLineColor;
@@ -56,21 +51,21 @@ public class ZxingConfig implements Serializable {
         this.frameLineColor = frameLineColor;
     }
 
-//    public int getScanLineColor() {
-//        return scanLineColor;
-//    }
-//
-//    public void setScanLineColor(@ColorRes int scanLineColor) {
-//        this.scanLineColor = scanLineColor;
-//    }
-//
-//    public int getMaskViewColor() {
-//        return maskViewColor;
-//    }
-//
-//    public void setMaskViewColor(@ColorRes int maskViewColor) {
-//        this.maskViewColor = maskViewColor;
-//    }
+    public int getScanLineColor() {
+        return scanLineColor;
+    }
+
+    public void setScanLineColor(@ColorRes int scanLineColor) {
+        this.scanLineColor = scanLineColor;
+    }
+
+    public int getMaskViewColor() {
+        return maskViewColor;
+    }
+
+    public void setMaskViewColor(@ColorRes int maskViewColor) {
+        this.maskViewColor = maskViewColor;
+    }
 
     public int getReactColor() {
         return reactColor;

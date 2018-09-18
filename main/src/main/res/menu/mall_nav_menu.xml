@@ -15,6 +15,11 @@
             android:title="@string/item2" />
 
         <item
+            android:id="@+id/item5"
+            android:icon="@mipmap/e5"
+            android:title="@string/item5" />
+
+        <item
             android:id="@+id/item3"
             android:icon="@mipmap/icon_about_us"
             android:title="@string/item3" />

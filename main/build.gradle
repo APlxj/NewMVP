@@ -4,7 +4,9 @@ if (Boolean.valueOf(rootProject.ext.isMain)) {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'com.jakewharton.butterknife'
-apply plugin: 'me.tatarka.retrolambda'  //lambda配置
+//apply plugin: 'me.tatarka.retrolambda'  //lambda配置
+
+apply from: '../MobSDK.gradle'//mob
 
 android {
     compileSdkVersion rootProject.ext.android.compileSdkVersion
@@ -85,4 +87,15 @@ dependencies {
     implementation project(':model-net')
     //zxing
     implementation project(':model-zxing')
+    //ocr
+    implementation project(':model-ocr')
 }
+
+//configurations.all {
+//    exclude group: 'cn.sharesdk', module: 'ShareSDK-Wechat-Core'
+//    exclude group: 'com.mob', module: 'MobTools'
+//    exclude group: 'com.mob', module: 'MobGUI'
+//    exclude group: 'com.mob', module: 'MobCommons'
+//    exclude group: 'com.mob', module: 'MobPush'
+//    exclude group: 'com.mob', module: 'SDKWrapper'
+//}

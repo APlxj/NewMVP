@@ -23,6 +23,7 @@ public final class SPUtils {
 
     private static SimpleArrayMap<String, SPUtils> SP_UTILS_MAP = new SimpleArrayMap<>();
     private SharedPreferences sp;
+    public static final String USER = "newmvpuser";
 
     /**
      * 获取 SP 实例

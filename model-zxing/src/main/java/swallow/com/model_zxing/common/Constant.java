@@ -5,7 +5,6 @@ package swallow.com.model_zxing.common;
  * <p>
  * zxing常量
  */
-
 public class Constant {
     public static final int DECODE = 1;
     public static final int DECODE_FAILED = 2;
@@ -20,10 +19,10 @@ public class Constant {
     public static final String CODED_CONTENT = "codedContent";
     public static final String CODED_BITMAP = "codedBitmap";
 
-
     /*传递的zxingconfing*/
 
     public static final String INTENT_ZXING_CONFIG = "zxingConfig";
 
+    public static boolean isOcr = false;
 
 }

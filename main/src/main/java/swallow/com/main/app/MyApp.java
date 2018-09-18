@@ -1,5 +1,7 @@
 package swallow.com.main.app;
 
+import com.mob.MobSDK;
+
 import swallow.com.main.crash.RecoveryUtils;
 import swallow.com.model_base.BaseApplication;
 
@@ -17,5 +19,7 @@ public class MyApp extends BaseApplication {
         super.onCreate();
         //recovery配置
         RecoveryUtils.init(this);
+        //mob
+        MobSDK.init(this, "27dcdad452385", "5d1ca47c252a59a3475d13c04a163016");
     }
 }

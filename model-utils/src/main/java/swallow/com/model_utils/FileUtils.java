@@ -72,6 +72,11 @@ public final class FileUtils {
         return rename(getFileByPath(filePath), newName);
     }
 
+    public static File getSaveFile(String fileName) {
+        File file = new File(Utils.getApp().getFilesDir(), fileName + ".jpg");
+        return file;
+    }
+
     /**
      * 重命名文件
      *

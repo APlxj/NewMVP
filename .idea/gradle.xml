@@ -10,9 +10,11 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/main" />
+            <option value="$PROJECT_DIR$/mob" />
             <option value="$PROJECT_DIR$/model-base" />
             <option value="$PROJECT_DIR$/model-data" />
             <option value="$PROJECT_DIR$/model-net" />
+            <option value="$PROJECT_DIR$/model-ocr" />
             <option value="$PROJECT_DIR$/model-ui" />
             <option value="$PROJECT_DIR$/model-utils" />
             <option value="$PROJECT_DIR$/model-zxing" />

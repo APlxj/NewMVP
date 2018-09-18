@@ -24,6 +24,7 @@ public class IHomeContract {
     public interface Model extends IModel {
         /**
          * 获取条目数据
+         *
          * @param page
          */
         Observable<BaseObj<FeedArticleListData>> getFeedArticleList(int page);
@@ -38,15 +39,16 @@ public class IHomeContract {
         /**
          * 加载轮播图
          */
-        void  BannerData();
+        void BannerData();
 
         /**
          * 获取文章数据
+         *
          * @param isRefresh
          * @param rlRefreshLayout
          * @param page
          */
-        void  FeedArticleList(boolean isRefresh, SmartRefreshLayout rlRefreshLayout, int page);
+        void FeedArticleList(boolean isRefresh, SmartRefreshLayout rlRefreshLayout, int page);
 
         /**
          * 轮播图自动播放
@@ -60,6 +62,8 @@ public class IHomeContract {
     }
 
     public interface View extends IView {
+
+        void scan();
 
     }
 }

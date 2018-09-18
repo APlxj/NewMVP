@@ -37,5 +37,4 @@ dependencies {
     api rootProject.ext.dependencies["banner"]
     //图片形状
     api rootProject.ext.dependencies["roundedimageview"]
-    implementation files('libs/ocr-sdk.jar')
 }

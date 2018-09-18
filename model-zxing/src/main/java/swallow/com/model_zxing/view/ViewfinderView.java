@@ -42,7 +42,6 @@ public final class ViewfinderView extends View {
     private int statusColor; // 提示文字颜色
     private int reactColor;//四个角的颜色
 
-
     private List<ResultPoint> possibleResultPoints;
     private List<ResultPoint> lastPossibleResultPoints;
     // 扫描线移动的y
@@ -52,7 +51,6 @@ public final class ViewfinderView extends View {
     private ValueAnimator valueAnimator;
     private Rect frame;
 
-
     public ViewfinderView(Context context) {
         this(context, null);
 
@@ -60,20 +58,15 @@ public final class ViewfinderView extends View {
 
     public ViewfinderView(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
-
-
     }
-
 
     public void setZxingConfig(ZxingConfig config) {
         this.config = config;
         reactColor = ContextCompat.getColor(getContext(), config.getReactColor());
     }
 
-
     public ViewfinderView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-
 
         maskColor = ContextCompat.getColor(getContext(), R.color.viewfinder_mask);
         resultColor = ContextCompat.getColor(getContext(), R.color.result_view);
@@ -83,10 +76,7 @@ public final class ViewfinderView extends View {
         possibleResultPoints = new ArrayList<ResultPoint>(10);
         lastPossibleResultPoints = null;
 
-
         initPaint();
-
-
     }
 
     private void initPaint() {
@@ -94,15 +84,13 @@ public final class ViewfinderView extends View {
 
         scanLinePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-        scanLinePaint.setStrokeWidth(6);
+        scanLinePaint.setStrokeWidth(3);
         scanLinePaint.setStyle(Paint.Style.FILL);
         scanLinePaint.setDither(true);
-        scanLinePaint.setColor(Color.WHITE);
-
+        scanLinePaint.setColor(Color.GREEN);
     }
 
     private void initAnimator() {
-
 
         if (valueAnimator == null) {
             valueAnimator = ValueAnimator.ofInt(frame.top, frame.bottom);
@@ -113,23 +101,17 @@ public final class ViewfinderView extends View {
             valueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
                 public void onAnimationUpdate(ValueAnimator animation) {
-
                     scanLineTop = (int) animation.getAnimatedValue();
                     invalidate();
-
                 }
             });
 
             valueAnimator.start();
         }
-
-
     }
 
     public void setCameraManager(CameraManager cameraManager) {
         this.cameraManager = cameraManager;
-
-
     }
 
     @SuppressLint("DrawAllocation")
@@ -155,7 +137,6 @@ public final class ViewfinderView extends View {
 
         /*绘制取景框边框*/
         drawFrameBounds(canvas, frame);
-
 
         if (resultBitmap != null) {
             // Draw the opaque result bitmap over the scanning rectangle
@@ -222,6 +203,9 @@ public final class ViewfinderView extends View {
         // Draw the exterior (i.e. outside the framing rect) darkened
         // 绘制取景框外的暗灰色的表面，分四个矩形绘制
         paint.setColor(resultBitmap != null ? resultColor : maskColor);
+        if (config.getMaskViewColor() != -1) {
+            paint.setColor(ContextCompat.getColor(getContext(), config.getMaskViewColor()));
+        }
         /*上面的框*/
         canvas.drawRect(0, 0, width, frame.top, paint);
         /*绘制左边的框*/
@@ -262,7 +246,6 @@ public final class ViewfinderView extends View {
 
         corWidth = corWidth > 15 ? 15 : corWidth;
 
-
         /*角在线外*/
         // 左上角
         canvas.drawRect(frame.left - corWidth, frame.top, frame.left, frame.top
@@ -286,7 +269,6 @@ public final class ViewfinderView extends View {
                 + corWidth, frame.bottom + corWidth, paint);
     }
 
-
     /**
      * 绘制移动扫描线
      *
@@ -295,9 +277,11 @@ public final class ViewfinderView extends View {
      */
     private void drawScanLight(Canvas canvas, Rect frame) {
 
-        canvas.drawLine(frame.left, scanLineTop, frame.right, scanLineTop, scanLinePaint);
-
-
+        if (config.getScanLineColor() != -1) {
+            scanLinePaint.setColor(ContextCompat.getColor(getContext(), config.getScanLineColor()));
+        }
+        canvas.drawLine(frame.left + 10, scanLineTop, frame.right - 10
+                , scanLineTop, scanLinePaint);
     }
 
     public void drawViewfinder() {

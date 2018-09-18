@@ -1,1 +1,1 @@
-include ':app', ':model-base', ':model-data', ':model-ui', ':model-utils', ':main', ':model-net', ':model-zxing', ':model-zxing'
+include ':app', ':model-base', ':model-data', ':model-ui', ':model-utils', ':main', ':model-net', ':model-zxing', ':model-zxing', ':mob', ':model-ocr'

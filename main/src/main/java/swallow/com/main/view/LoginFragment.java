@@ -10,6 +10,7 @@ import android.widget.TextView;
 import butterknife.BindView;
 import swallow.com.main.R;
 import swallow.com.main.R2;
+import swallow.com.main.contant.SettingConfig;
 import swallow.com.main.contract.ILoginContract;
 import swallow.com.main.presenter.LoginPresenter;
 import swallow.com.model_base.BaseFragment;
@@ -17,6 +18,7 @@ import swallow.com.model_data.model.BaseEventbusBean;
 import swallow.com.model_data.model.EventBusBean;
 import swallow.com.model_data.model.User;
 import swallow.com.model_utils.EditUtils;
+import swallow.com.model_utils.SPUtils;
 import swallow.com.model_utils.ToastUtils;
 
 /**
@@ -91,6 +93,10 @@ public class LoginFragment
         if (verifyMsg()) {
             User user = mPresenter.login(mobile.getText().toString(), psw.getText().toString());
             if (null != user) {
+                //保存账号信息
+                SPUtils.getInstance(SPUtils.USER).put(SettingConfig.LoginID, user.getMobile());
+                SPUtils.getInstance(SPUtils.USER).put(SettingConfig.LoginPSW, user.getPassword());
+
                 getActivity().finish();
                 ToastUtils.showShort("登录成功");
             } else {

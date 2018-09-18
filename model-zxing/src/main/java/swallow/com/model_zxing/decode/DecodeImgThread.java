@@ -24,16 +24,13 @@ import java.util.Vector;
 
 public class DecodeImgThread extends Thread {
 
-
     /*图片路径*/
     private String imgPath;
     /*回调*/
     private DecodeImgCallback callback;
     private Bitmap scanBitmap;
 
-
     public DecodeImgThread(String imgPath, DecodeImgCallback callback) {
-
         this.imgPath = imgPath;
         this.callback = callback;
     }
@@ -53,7 +50,6 @@ public class DecodeImgThread extends Thread {
         options.inJustDecodeBounds = true; // 先获取原大小
 
         scanBitmap = BitmapFactory.decodeFile(imgPath, options);
-
 
         options.inJustDecodeBounds = false; // 获取新的大小
         int sampleSize = (int) (options.outHeight / (float) 400);
@@ -89,7 +85,6 @@ public class DecodeImgThread extends Thread {
 
         } catch (Exception e) {
             e.printStackTrace();
-            //  Log.i("解析的图片结果","失败");
         }
 
         if (rawResult != null) {
@@ -97,9 +92,5 @@ public class DecodeImgThread extends Thread {
         } else {
             callback.onImageDecodeFailed();
         }
-
-
     }
-
-
 }

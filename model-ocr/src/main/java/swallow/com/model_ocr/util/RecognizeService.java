@@ -1,4 +1,4 @@
-package swallow.com.model_ui.ocr;
+package swallow.com.model_ocr.util;
 
 import com.baidu.ocr.sdk.OCR;
 import com.baidu.ocr.sdk.OnResultListener;
@@ -9,6 +9,8 @@ import com.google.gson.Gson;
 
 import java.io.File;
 
+import swallow.com.model_ocr.model.ResultModel;
+
 public class RecognizeService<T> {
     private static Gson gson;
 
@@ -18,7 +20,7 @@ public class RecognizeService<T> {
         void onError(String result);
     }
 
-    public static void recAccurateBasic(String filePath, final ServiceListener<ResultOcrModel> listener) {
+    public static void recAccurateBasic(String filePath, final ServiceListener<ResultModel> listener) {
         GeneralParams param = new GeneralParams();
         param.setDetectDirection(true);
         param.setVertexesLocation(true);
@@ -30,7 +32,7 @@ public class RecognizeService<T> {
                 if (gson == null) {
                     gson = new Gson();
                 }
-                ResultOcrModel resultModel = gson.fromJson(result.getJsonRes(), ResultOcrModel.class);
+                ResultModel resultModel = gson.fromJson(result.getJsonRes(), ResultModel.class);
                 listener.onResult(resultModel);
             }
 
