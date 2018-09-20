@@ -4,6 +4,7 @@ import com.mob.MobSDK;
 
 import swallow.com.main.crash.RecoveryUtils;
 import swallow.com.model_base.BaseApplication;
+import swallow.com.model_ocr.util.OcrUtils;
 
 /**
  * 类描述：
@@ -21,5 +22,7 @@ public class MyApp extends BaseApplication {
         RecoveryUtils.init(this);
         //mob
         MobSDK.init(this, "27dcdad452385", "5d1ca47c252a59a3475d13c04a163016");
+        //ocr
+        OcrUtils.init(getApplicationContext());
     }
 }

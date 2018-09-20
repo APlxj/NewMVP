@@ -1,5 +1,7 @@
 package swallow.com.model_ocr.util;
 
+import android.content.Context;
+
 import com.baidu.ocr.sdk.OCR;
 import com.baidu.ocr.sdk.OnResultListener;
 import com.baidu.ocr.sdk.exception.OCRError;
@@ -20,13 +22,13 @@ public class RecognizeService<T> {
         void onError(String result);
     }
 
-    public static void recAccurateBasic(String filePath, final ServiceListener<ResultModel> listener) {
+    public static void recAccurateBasic(Context appContext, String filePath, final ServiceListener<ResultModel> listener) {
         GeneralParams param = new GeneralParams();
         param.setDetectDirection(true);
         param.setVertexesLocation(true);
         param.setRecognizeGranularity(GeneralParams.GRANULARITY_SMALL);
         param.setImageFile(new File(filePath));
-        OCR.getInstance().recognizeAccurateBasic(param, new OnResultListener<GeneralResult>() {
+        OCR.getInstance(appContext).recognizeAccurateBasic(param, new OnResultListener<GeneralResult>() {
             @Override
             public void onResult(GeneralResult result) {
                 if (gson == null) {

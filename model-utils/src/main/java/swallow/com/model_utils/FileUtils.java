@@ -1,6 +1,7 @@
 package swallow.com.model_utils;
 
 import android.annotation.SuppressLint;
+import android.os.Environment;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -72,9 +73,8 @@ public final class FileUtils {
         return rename(getFileByPath(filePath), newName);
     }
 
-    public static File getSaveFile(String fileName) {
-        File file = new File(Utils.getApp().getFilesDir(), fileName + ".jpg");
-        return file;
+    public static File getSaveFile() {
+        return new File(Environment.getExternalStorageDirectory(), "pic.jpg");
     }
 
     /**

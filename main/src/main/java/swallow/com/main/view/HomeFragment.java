@@ -2,6 +2,7 @@ package swallow.com.main.view;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,7 @@ import org.greenrobot.eventbus.EventBus;
 import butterknife.BindView;
 import swallow.com.main.R;
 import swallow.com.main.R2;
+import swallow.com.main.app.MyApp;
 import swallow.com.main.app.RouterURL;
 import swallow.com.main.contant.SettingConfig;
 import swallow.com.main.contract.IHomeContract;
@@ -27,6 +29,7 @@ import swallow.com.model_base.BaseListFragment;
 import swallow.com.model_data.model.EventBusBean;
 import swallow.com.model_ocr.camera.CameraActivity;
 import swallow.com.model_ocr.model.ResultModel;
+import swallow.com.model_ocr.util.OcrUtils;
 import swallow.com.model_ocr.util.RecognizeService;
 import swallow.com.model_ui.keyboard.KeyboardType;
 import swallow.com.model_ui.keyboard.SecurityConfigure;
@@ -177,6 +180,14 @@ public class HomeFragment
         CharSequence[] sequences = {"二维码/条形码", "身份证（正）", "身份证（反）", "图片"};
         builder.setTitle(getResources().getString(R.string.main_scan))
                 .setItems(sequences, (dialog, which) -> {
+                    if (which != 0) {
+                        if (!OcrUtils.hasGotToken) {
+                            ToastUtils.showShort("Ocr初始化失败");
+                            return;
+                        }
+                        intent = new Intent(getApplication(), CameraActivity.class);
+                        intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH, FileUtils.getSaveFile().getAbsolutePath());
+                    }
                     switch (which) {
                         case 0:
                             /*ZxingConfig是配置类
@@ -199,27 +210,15 @@ public class HomeFragment
                             startActivityForResult(intent, REQUEST_CODE_SCAN);
                             break;
                         case 1:
-                            intent = new Intent(getApplication(), CameraActivity.class);
-                            intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH,
-                                    FileUtils.getSaveFile("pic").getAbsolutePath());
-                            intent.putExtra(CameraActivity.KEY_CONTENT_TYPE,
-                                    CameraActivity.CONTENT_TYPE_ID_CARD_FRONT);
+                            intent.putExtra(CameraActivity.KEY_CONTENT_TYPE, CameraActivity.CONTENT_TYPE_ID_CARD_FRONT);
                             startActivityForResult(intent, REQUEST_CODE_SCAN_FRONT);
                             break;
                         case 2:
-                            intent = new Intent(getApplication(), CameraActivity.class);
-                            intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH,
-                                    FileUtils.getSaveFile("pic").getAbsolutePath());
-                            intent.putExtra(CameraActivity.KEY_CONTENT_TYPE,
-                                    CameraActivity.CONTENT_TYPE_ID_CARD_BACK);
+                            intent.putExtra(CameraActivity.KEY_CONTENT_TYPE, CameraActivity.CONTENT_TYPE_ID_CARD_BACK);
                             startActivityForResult(intent, REQUEST_CODE_SCAN_BACK);
                             break;
                         case 3:
-                            intent = new Intent(getApplication(), CameraActivity.class);
-                            intent.putExtra(CameraActivity.KEY_OUTPUT_FILE_PATH,
-                                    FileUtils.getSaveFile("pic").getAbsolutePath());
-                            intent.putExtra(CameraActivity.KEY_CONTENT_TYPE,
-                                    CameraActivity.CONTENT_TYPE_GENERAL);
+                            intent.putExtra(CameraActivity.KEY_CONTENT_TYPE, CameraActivity.CONTENT_TYPE_GENERAL);
                             startActivityForResult(intent, REQUEST_CODE_SCAN_GENERAL);
                             break;
                     }
@@ -230,25 +229,27 @@ public class HomeFragment
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (data == null) return;
-        String content;
-        if (requestCode == REQUEST_CODE_SCAN) {
-            // 扫描二维码/条码回传
-            content = data.getStringExtra(Constant.CODED_CONTENT);
-            ToastUtils.showShort(content);
-        } else {
-            RecognizeService.recAccurateBasic(FileUtils.getSaveFile("pic").getAbsolutePath(),
-                    new RecognizeService.ServiceListener<ResultModel>() {
-                        @Override
-                        public void onResult(ResultModel result) {
-                            ToastUtils.showShort(result.toString());
-                        }
+        if (resultCode == Activity.RESULT_OK) {
+            if (data == null) return;
+            String content;
+            if (requestCode == REQUEST_CODE_SCAN) {
+                // 扫描二维码/条码回传
+                content = data.getStringExtra(Constant.CODED_CONTENT);
+                ToastUtils.showShort(content);
+            } else {
+                RecognizeService.recAccurateBasic(getApplication(), FileUtils.getSaveFile().getAbsolutePath(),
+                        new RecognizeService.ServiceListener<ResultModel>() {
+                            @Override
+                            public void onResult(ResultModel result) {
+                                ToastUtils.showShort(result.toString());
+                            }
 
-                        @Override
-                        public void onError(String result) {
+                            @Override
+                            public void onError(String result) {
 
-                        }
-                    });
+                            }
+                        });
+            }
         }
     }
 }

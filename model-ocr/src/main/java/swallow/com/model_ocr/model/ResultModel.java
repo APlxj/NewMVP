@@ -111,6 +111,7 @@ public class ResultModel {
             public void setX(int x) {
                 this.x = x;
             }
+
         }
 
         public static class FinegrainedVertexesLocationBean {
@@ -137,6 +138,17 @@ public class ResultModel {
             public void setX(int x) {
                 this.x = x;
             }
+
         }
+    }
+
+    @Override
+    public String toString() {
+        return "ResultModel{" +
+                "log_id=" + log_id +
+                ", direction=" + direction +
+                ", words_result_num=" + words_result_num +
+                ", words_result=" + words_result +
+                '}';
     }
 }
